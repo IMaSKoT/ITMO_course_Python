@@ -1,0 +1,39 @@
+import unittest
+import labCode as main
+class Testf(unittest.TestCase):
+    #Обычный тест 1
+    def test1(self):
+        self.assertEqual(main.f([2,7,11,13],9),[0,1])
+    #Обычный тест 2
+    def test2(self):
+        self.assertEqual(main.f([1, 2, -3, 4], -2), [0, 2])
+    #Тест с отсутствием ответа
+    def test3(self):
+        self.assertEqual(main.f([2, 3, 4], 1), None)
+    #Тест на неккоректный тип данных внутри массива
+    def test4(self):
+        self.assertEqual(main.f([2, 3, 4, 13, -1.1], 5), None)
+    #Тест на неккоректный тип данных внутри массива 2 (строка)
+    def test5(self):
+        self.assertEqual(main.f([2, 3, '4', 13, -1.1], 5), None)
+    #Тест на неккоректный тип данных внутри массива 3 (список)
+    def test6(self):
+        self.assertEqual(main.f([2, 3, 4, [], -1.1], 5), None)
+    #Тест на неккоректный тип данных внутри массива 4 (булевый тип)
+    def test7(self):
+        self.assertEqual(main.f([2, 3, 4, 13, True], -3), None)
+    #Тест на пустой список
+    def test8(self):
+        self.assertEqual(main.f([], 9), None)
+    #Тест на неккоректный тип nums
+    def test9(self):
+        self.assertEqual(main.f(75, 75), None)
+    #Тест на неккоректный тип target
+    def test10(self):
+        self.assertEqual(main.f([0,1,2,3], 7.5), None)
+
+
+
+
+if __name__ == '__main__':
+    unittest.main()
