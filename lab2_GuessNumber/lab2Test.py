@@ -40,3 +40,5 @@ class Testbinary_search(unittest.TestCase):
 
     def test6(self):
         self.assertEqual(main.binary_search(-3, [-3]), (-3, 1))
+if __name__ == '__main__':
+    unittest.main()
