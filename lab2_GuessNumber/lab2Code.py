@@ -44,7 +44,7 @@ def seq_search(target: int, diap: list) -> tuple[int, int] | str:
     :return: (Число, Количество попыток) если число есть в диапазоне, а если его нет или введенные данные неккоректны, то возвращает ошибку
     """
     if isinstance(target, int) and isinstance(diap, list):
-        # Проход по массиву циклом for и использованием счётчика
+        # Проход по массиву циклом for с использованием счётчика
         count = 0
         for i in range(len(diap)):
             count += 1
