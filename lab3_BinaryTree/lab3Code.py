@@ -1,6 +1,19 @@
 import types
 
 
+def main():
+    """
+    Функция запуска кода
+    :return: None
+    """
+    try:
+        height = int(input("Введите высоту дерева: "))
+        root = int(input("Введите значения корня: "))
+        print(gen_bin_tree(height, root))
+    except:
+        print('Неккоректные данные или слишком большие значения')
+
+
 def left_branch17(root: int) -> int:
     """
     Вычисление значения левой ветки
@@ -44,4 +57,6 @@ def gen_bin_tree(height=4, root=17, l_b=left_branch17, r_b=right_branch17):
             return {f'{root}': [gen_bin_tree(height - 1, left_branch), gen_bin_tree(height - 1, right_branch)]}
     else:
         return
-print(gen_bin_tree())
+
+
+main()

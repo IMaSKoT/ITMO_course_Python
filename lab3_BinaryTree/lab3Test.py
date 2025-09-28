@@ -38,3 +38,6 @@ class Testgen_bin_tree(unittest.TestCase):
     def test8(self):
         self.assertEqual(main.gen_bin_tree(-1, 17, l_b=main.left_branch17, r_b=main.right_branch17),
                          {'17': []})
+
+if __name__ == '__main__':
+    unittest.main()
