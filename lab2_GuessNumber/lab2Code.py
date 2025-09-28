@@ -5,12 +5,17 @@ def main():
 
 
     """
+    # Ввод данных
     target = int(input("Введите число:"))
     left = int(input("Введите левую границу:"))
     right = int(input("Введите правую границу:"))
     type = input('Введите seq для линейного поиска и bin для бинарного:')
-    diap = [x for x in range(left, right + 1)]
-    guess_number(target, diap, type)
+    # Проверка на корректность диапазона
+    if left <= right:
+        diap = [x for x in range(left, right + 1)]
+        guess_number(target, diap, type)
+    else:
+        print('Введите корректный диапазон')
 
 
 def guess_number(target, diap, type) -> list[int, int] | None:
@@ -39,6 +44,7 @@ def seq_search(target: int, diap: list) -> tuple[int, int] | str:
     :return: (Число, Количество попыток) если число есть в диапазоне, а если его нет или введенные данные неккоректны, то возвращает ошибку
     """
     if isinstance(target, int) and isinstance(diap, list):
+        # Проход по массиву циклом for и использованием счётчика
         count = 0
         for i in range(len(diap)):
             count += 1
@@ -61,6 +67,9 @@ def binary_search(target: int, diap: list) -> tuple[int, int] | str:
         left = 0
         right = len(diap) - 1
         mid = left + (right - left) // 2
+        # Создаем левые и правые границы; пока границы не уменьшились до одного числа, сравниваем середину с искомым числом
+        # С каждой попыткой мы уменьшаем диапазон в два раза, пододвигая левую или правую границу
+        # Если число найдено, возвращаем его и кол-во попыток
         while left <= mid and right >= mid:
             count += 1
             if diap[mid] == target:
@@ -73,3 +82,6 @@ def binary_search(target: int, diap: list) -> tuple[int, int] | str:
                 mid = left + (right - left) // 2
         return 'Числа нет в указанном диапазоне'
     return 'Введите корректные данные'
+
+
+main()
