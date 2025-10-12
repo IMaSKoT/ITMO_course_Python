@@ -42,7 +42,7 @@ def gen_bin_tree(height=4, root=17, l_b=left_branch17, r_b=right_branch17):
     :return: Бинарное дерево; если же данные введены неправильно, то None
     """
     # Проверка на корректно введенные данные
-    if isinstance(height, int) or not isinstance(root, int) or not isinstance(l_b, types.FunctionType) or not (
+    if isinstance(height, int) and isinstance(root, int) and isinstance(l_b, types.FunctionType) and isinstance(
             r_b, types.FunctionType):
         # Проверка на корректно введенную функцию
         try:
