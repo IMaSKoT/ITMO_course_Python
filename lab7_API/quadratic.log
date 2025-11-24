@@ -1,0 +1,18 @@
+INFO: Запуск функции solve_quadratic с аргументами (1, -3, 2) {}
+INFO: Solving equation: 1x^2 + -3x + 2 = 0
+DEBUG: Discriminant: 1
+INFO: Two real roots computed
+INFO: Функция solve_quadratic успешно завершена. Результат: (2.0, 1.0)
+INFO: Запуск функции solve_quadratic с аргументами (1, 1, 10) {}
+INFO: Solving equation: 1x^2 + 1x + 10 = 0
+DEBUG: Discriminant: -39
+WARNING: Discriminant < 0: no real roots
+INFO: Функция solve_quadratic успешно завершена. Результат: None
+INFO: Запуск функции solve_quadratic с аргументами ('строка', 1, 1) {}
+INFO: Solving equation: строкаx^2 + 1x + 1 = 0
+CRITICAL: Parameter 'a' must be a number, got: строка
+ERROR: Ошибка в функции solve_quadratic: TypeError Coefficient 'a' must be numeric
+INFO: Запуск функции solve_quadratic с аргументами (0, 5, 1) {}
+INFO: Solving equation: 0x^2 + 5x + 1 = 0
+ERROR: Coefficient 'a' cannot be zero
+ERROR: Ошибка в функции solve_quadratic: ValueError a cannot be zero

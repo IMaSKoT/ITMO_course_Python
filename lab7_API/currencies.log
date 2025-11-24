@@ -1,0 +1,2 @@
+INFO: Запуск функции get_currencies_to_file с аргументами (['USD', 'EUR'],) {}
+INFO: Функция get_currencies_to_file успешно завершена. Результат: {'USD': 79.0246, 'EUR': 90.5625}
