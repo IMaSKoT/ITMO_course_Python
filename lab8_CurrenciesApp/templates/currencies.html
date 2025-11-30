@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Курсы валют</title>
+</head>
+<body>
+    <a href="/">Главная</a> |
+    <a href="/currencies">Курсы валют</a> |
+    <a href="/users">Пользователи</a> |
+    <a href="/aboutapp">О приложении</a>
+    <hr>
+
+    <h1>Список валют</h1>
+
+    <table border="1">
+        <tr>
+            <th>Буквенный код</th>
+            <th>Цифровой код</th>
+            <th>Название</th>
+            <th>Курс</th>
+            <th>Номинал</th>
+        </tr>
+        {% for currency in currencies %}
+        <tr>
+            <td>{{ currency.id }}</td>
+            <td>{{ currency.code}}</td>
+            <td>{{ currency.name }}</td>
+            <td>{{ currency.value }}</td>
+            <td>{{ currency.nominal}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

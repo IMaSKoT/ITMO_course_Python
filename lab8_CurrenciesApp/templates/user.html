@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <a href="/">Главная</a> |
+    <a href="/currencies">Курсы валют</a> |
+    <a href="/users">Пользователи</a> |
+    <a href="/aboutapp">О приложении</a>
+    <hr>
+
+    {% if user %}
+        <h1>Пользователь: {{ user.name }}</h1>
+        <p>ID: {{ user.id }}</p>
+
+        <h3>Подписки на валюты:</h3>
+        <ul>
+            {% for cur in user_currencies %}
+            <li>{{ cur.name }} ({{ cur.id }}): {{ cur.value }} руб.</li>
+            {% endfor %}
+        </ul>
+
+        {% if historical_data %}
+        <h3>Графики курсов:</h3>
+
+        {% for currency_code, data in historical_data.items() %}
+            <h4>{{ currency_code }}</h4>
+            <canvas id="chart-{{ currency_code }}" width="400" height="200"></canvas>
+
+            <script>
+                var ctx = document.getElementById('chart-{{ currency_code }}').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: {{ data | map(attribute='date') | list | tojson }},
+                        datasets: [{
+                            label: '{{ currency_code }}',
+                            data: {{ data | map(attribute='value') | list | tojson }},
+                            borderColor: 'blue'
+                        }]
+                    }
+                });
+            </script>
+            <br>
+        {% endfor %}
+
+        {% else %}
+            <p>Нет исторических данных</p>
+        {% endif %}
+
+    {% else %}
+        <h1>Пользователь не найден</h1>
+    {% endif %}
+</body>
+</html>
