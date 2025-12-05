@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Курсы валют</title>
+</head>
+<body>
+    <a href="/">Главная</a> |
+    <a href="/currencies">Курсы валют</a> |
+    <a href="/users">Пользователи</a> |
+    <a href="/author">Об авторе</a>
+    <hr>
+
+    <h1>Список валют</h1>
+
+    <table border="1">
+        <tr>
+            <th>Буквенный код</th>
+            <th>Цифровой код</th>
+            <th>Название</th>
+            <th>Курс</th>
+            <th>Номинал</th>
+            <th>Действия</th>
+            </tr>
+        {% for currency in currencies %}
+        <tr>
+            <td>{{ currency.char_code }}</td>
+            <td>{{ currency.num_code }}</td>
+            <td>{{ currency.name }}</td>
+            <td>{{ currency.value }}</td>
+            <td>{{ currency.nominal}} </td>
+            <td>
+                <a href="/currency/delete?id={{ currency.char_code }}">Удалить</a>
+            </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
