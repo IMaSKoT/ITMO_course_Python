@@ -5,10 +5,7 @@ from urllib.parse import urlparse, parse_qs, quote
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from utils import get_currencies, get_currencies_with_days
 from models import Currencies, Users, App, Author
-
-from controllers.databasecontroller import CurrencyRatesCRUD
-from controllers.currencycontroller import CurrencyController
-from controllers.usercontroller import UserController
+from controllers import CurrencyRatesCRUD,UserController,CurrencyController
 
 # Настройка Jinja2
 env = Environment(
