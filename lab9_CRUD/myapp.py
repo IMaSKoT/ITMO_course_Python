@@ -5,7 +5,7 @@ from urllib.parse import urlparse, parse_qs, quote
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from utils import get_currencies, get_currencies_with_days
 from models import Currencies, Users, App, Author
-from controllers import CurrencyRatesCRUD,UserController,CurrencyController
+from controllers import CurrencyRatesCRUD, UserController, CurrencyController
 
 # Настройка Jinja2
 env = Environment(
@@ -104,7 +104,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         # Обработка удаления и обновления
         if path == '/currency/delete':
             action_performed = True
-            char_code_list = query.get('id')  # Ожидаем char_code (например, 'USD')
+            char_code_list = query.get('id')
             if char_code_list:
                 char_code = char_code_list[0]
                 try:
@@ -205,13 +205,11 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             currencies_data_from_db = currency_controller.list_currencies()
             html = template.render(currencies=currencies_data_from_db)
 
-        # Debug: Вывод в консоль
+        # Вывод валют в консоль
         elif path == '/currency/show':
             currencies = currency_controller.list_currencies()
-            print("\n--- DEBUG: ВСЕ ВАЛЮТЫ ---")
             for c in currencies:
                 print(f"[{c['char_code']}]: {c['value']}")
-            print("---------------------------\n")
 
             self.send_response(200)
             self.send_header('Content-Type', 'text/plain; charset=utf-8')
@@ -219,7 +217,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(bytes("Курсы валют выведены в консоль сервера.", "utf-8"))
             return
 
-        # 7. Страница результата действия
+        # Страница результата действия
         elif path == '/action_result':
             status = query.get('status', ['fail'])[0]
             message = query.get('message', ['Неизвестная ошибка'])[0]
@@ -247,5 +245,5 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 # Запуск программы
 if __name__ == '__main__':
     httpd = HTTPServer(('localhost', 8080), SimpleHTTPRequestHandler)
-    print('server is running on http://localhost:8080')
+    print('http://localhost:8080')
     httpd.serve_forever()
