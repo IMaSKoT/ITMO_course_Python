@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О приложении</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --warning: #f9c74f;
+            --danger: #f94144;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.2rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-header h1 {
+            color: var(--secondary);
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+            text-align: center;
+            border-top: 4px solid var(--primary);
+        }
+
+        .app-logo {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-name {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .app-version {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .app-description {
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .author-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            margin-bottom: 2rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        .author-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .author-name {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .author-group {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .app-card {
+                padding: 2rem 1rem;
+            }
+
+            .about-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <a href="/" class="nav-link">🏠 Главная</a>
+            <a href="/currencies" class="nav-link">💱 Курсы валют</a>
+            <a href="/users" class="nav-link">👥 Пользователи</a>
+            <a href="/aboutapp" class="nav-link">ℹ️ О приложении</a>
+        </nav>
+
+        <div class="about-header">
+            <h1>О приложении</h1>
+            <p>Вся информация о приложении и его создателе</p>
+        </div>
+
+        <div class="app-card">
+            <div class="app-logo">💱</div>
+            <div class="app-name">{{ AppName }}</div>
+            <div class="app-version">Версия {{ AppVersion }}</div>
+            <p class="app-description">
+                Современное веб-приложение для отслеживания курсов валют с возможностью
+                настройки персональных подписок и анализа исторических данных.
+            </p>
+        </div>
+
+        <div class="author-card">
+            <div class="author-avatar">MS</div>
+            <div class="author-name">{{ author_name }}</div>
+            <div class="author-group">{{ group }}</div>
+            <p>Разработчик приложения</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Технологии</h3>
+                <p>Python, Jinja2, HTML5, CSS3, Chart.js, REST API</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Данные</h3>
+                <p>Курсы валют предоставляются Центральным Банком РФ в реальном времени</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Функции</h3>
+                <p>Отслеживание курсов, исторические графики, управление пользователями</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

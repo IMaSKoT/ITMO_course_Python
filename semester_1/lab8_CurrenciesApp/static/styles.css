@@ -1,0 +1,420 @@
+/* styles.css */
+/* Основные стили и переменные */
+:root {
+    --primary: #4361ee;
+    --secondary: #3a0ca3;
+    --accent: #4cc9f0;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --success: #4bb543;
+    --warning: #f9c74f;
+    --danger: #f94144;
+    --gray: #6c757d;
+    --gray-light: #e9ecef;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+    --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+}
+
+/* Сброс и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Навигация */
+nav {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.2rem 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.nav-links a:hover::before {
+    left: 100%;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary), transparent);
+    margin: 2.5rem 0;
+}
+
+/* Заголовки */
+h1 {
+    color: var(--secondary);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+h3, h4 {
+    color: var(--secondary);
+    margin: 1.5rem 0 1rem;
+    font-weight: 600;
+}
+
+/* Карточки и контейнеры */
+.content-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Таблица валют */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+table th {
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    padding: 1.2rem 1rem;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+table td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--gray-light);
+    transition: var(--transition);
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tr:hover td {
+    background-color: rgba(67, 97, 238, 0.05);
+    transform: scale(1.01);
+}
+
+table td:first-child {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Списки */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: white;
+    margin: 0.8rem 0;
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left-color: var(--accent);
+}
+
+/* Ссылки в списках */
+ul li a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+ul li a:hover {
+    color: var(--accent);
+}
+
+ul li a::after {
+    content: '→';
+    opacity: 0;
+    transition: var(--transition);
+}
+
+ul li a:hover::after {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* Графики */
+.chart-container {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-primary);
+}
+
+canvas {
+    max-height: 400px;
+    width: 100% !important;
+}
+
+/* Информационные блоки */
+.info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: var(--transition);
+    border-top: 4px solid var(--primary);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card p:first-child {
+    color: var(--gray);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.info-card p:last-child {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Кнопки и интерактивные элементы */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+    color: white;
+}
+
+/* Сообщения */
+.message {
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.message.info {
+    background: rgba(67, 97, 238, 0.1);
+    border-left: 4px solid var(--primary);
+}
+
+.message.warning {
+    background: rgba(249, 199, 79, 0.1);
+    border-left: 4px solid var(--warning);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .nav-links a {
+        justify-content: center;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-card, .chart-container, .info-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Специфичные стили для страницы пользователя */
+.user-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 992px) {
+    .user-profile {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Иконки (можно заменить на реальные) */
+.nav-links a::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.nav-links a[href="/"]::before { content: '🏠'; }
+.nav-links a[href="/currencies"]::before { content: '💱'; }
+.nav-links a[href="/users"]::before { content: '👥'; }
+.nav-links a[href="/aboutapp"]::before { content: 'ℹ️'; }
